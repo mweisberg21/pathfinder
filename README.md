@@ -18,10 +18,10 @@ A path is plain text, not a file attachment or permission for another app to rea
 
 ## Downloads
 
-The public [release notes](https://mweisberg21.github.io/pathfinder/release-notes.html) link to the installer and checksum on the website. GitHub releases and issues in this private repository require repository access.
+The public [release notes](https://mweisberg21.github.io/pathfinder/release-notes.html) link to the installer and checksum on the website. The installer is also available from [GitHub Releases](https://github.com/mweisberg21/pathfinder/releases/tag/v0.1.0).
 
-This repository is private. Only the contents of `docs/` are published as the website, including the app installer. It does not contain the native app source. Pathfinder is free to download and use.
+This public repository contains only the download website and compiled app installer. The native app source is private and is not included in this repository or its history. Pathfinder is free to download and use.
 
 ## Website development
 
-Static HTML, CSS, and JavaScript; no dependencies or build step. Serve `docs/` with any static HTTP server. `demo.js` uses fictional local data only and never reads real files or the clipboard. GitHub Pages serves only `/docs` on `main`. Keep this README and other repository-only files outside `docs/`. Do not add native source, private configuration, credentials, or internal documentation to the published directory.
+Static HTML, CSS, and JavaScript; no dependencies or build step. Serve `docs/` with any static HTTP server. `demo.js` uses fictional local data only and never reads real files or the clipboard. GitHub Pages serves `/docs` on `main`. Everything in this repository is public: do not add native source, private configuration, credentials, or internal documentation anywhere in the repository.
