@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Find a file or folder. Put its path into ChatGPT, Claude, or wherever you’re typing. Pathfinder is free for Mac.">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:title" content="Pathfinder — The right path. Right at hand.">
+  <meta property="og:description" content="A free Mac utility for finding and inserting file and folder paths. Apple silicon · macOS 14+.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mweisberg21.github.io/pathfinder/">
+  <meta property="og:image" content="https://mweisberg21.github.io/pathfinder/assets/app-icon.png">
+  <link rel="canonical" href="https://mweisberg21.github.io/pathfinder/">
+  <link rel="icon" href="assets/app-icon.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="demo.js" defer></script>
+  <title>Pathfinder — The right path. Right at hand.</title>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="brand" href="./" aria-label="Pathfinder home"><img src="assets/app-icon.png" width="46" height="46" alt="">Pathfinder</a>
+    <nav aria-label="Main navigation"><a href="#setup">Setup</a><a href="#questions">Questions</a><a href="https://github.com/mweisberg21/pathfinder">GitHub</a></nav>
+  </header>
+  <main id="main" class="wrap">
+    <section class="hero" aria-labelledby="headline">
+      <div class="hero-copy">
+        <h1 id="headline">The right path.<br>Right at hand.</h1>
+        <p class="intro">Find a file or folder. Put its path into ChatGPT, Claude, or wherever you’re typing.</p>
+        <a class="download" href="https://github.com/mweisberg21/pathfinder/releases/download/v0.1.0/Pathfinder-0.1.0-macOS-arm64.dmg">
+          <svg viewBox="0 0 24 24" width="23" height="23" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 20h16"/></svg>Download for Mac
+        </a>
+        <p class="requirements">Free · Apple silicon · macOS 14+<br><a href="https://github.com/mweisberg21/pathfinder/releases/tag/v0.1.0">v0.1.0 · Early release</a></p>
+      </div>
+      <div class="demo" aria-label="Interactive Pathfinder demo">
+        <p id="demo-description" class="sr-only">This demo searches sample files only. Use the arrow keys to select a result, then Return to insert its path into the example below. It does not access your files or send a message.</p>
+        <div class="panel" id="demo-panel">
+          <div class="search-head">
+            <svg class="search-icon" viewBox="0 0 24 24" width="23" height="23" aria-hidden="true"><circle cx="10.5" cy="10.5" r="7.5"/><path d="m16 16 5 5"/></svg>
+            <input id="demo-search" type="search" value="website" placeholder="Search files and folders" aria-label="Search sample files" aria-describedby="demo-description" aria-controls="demo-results" autocomplete="off" spellcheck="false">
+            <button class="escape" id="demo-close" aria-label="Close demo search"><kbd>Esc</kbd></button>
+          </div>
+          <div class="filters" role="group" aria-label="File type"><button data-filter="all" aria-pressed="true">All</button><button data-filter="folder" aria-pressed="false">Folders</button><button data-filter="file" aria-pressed="false">Files</button></div>
+          <div class="results" id="demo-results" aria-label="Sample results">
+            <button class="result selected" data-index="0" aria-pressed="true"><img src="assets/folder.svg" alt="" width="38" height="38"><span class="result-copy"><strong>Website</strong><span>~/Projects</span></span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7 4 6 6-6 6"/></svg></button>
+            <button class="result" data-index="1" aria-pressed="false"><img src="assets/folder.svg" alt="" width="38" height="38"><span class="result-copy"><strong>Website assets</strong><span>~/Design</span></span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7 4 6 6-6 6"/></svg></button>
+            <button class="result" data-index="2" aria-pressed="false"><img src="assets/document.svg" alt="" width="38" height="38"><span class="result-copy"><strong>Website notes.md</strong><span>~/Documents</span></span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7 4 6 6-6 6"/></svg></button>
+          </div>
+          <div class="panel-footer"><span class="panel-brand"><img src="assets/app-icon.png" width="30" height="30" alt="">Pathfinder</span><button id="demo-insert">Insert path <kbd>Return</kbd></button></div>
+        </div>
+        <div class="demo-dismissed" id="demo-dismissed" hidden><img src="assets/app-icon.png" width="72" height="72" alt=""><span id="dismissed-message">Path inserted.</span><button id="demo-reopen">Open Pathfinder</button></div>
+        <div class="composer" aria-label="Example message"><span>Let’s work on</span><code id="inserted-path">/Users/you/Projects/Website</code></div>
+        <button class="try-demo" id="try-demo">Try the demo <kbd>Return</kbd></button>
+        <p id="demo-status" class="sr-only" role="status" aria-live="polite"></p>
+        <noscript><p class="no-script">Enable JavaScript to try the sample search. The Mac download works without it.</p></noscript>
+      </div>
+    </section>
+    <section class="workflow" aria-label="How Pathfinder works">
+      <div><span class="step-number">01</span><h2>Summon</h2><p class="shortcut" aria-label="Control Option Space"><kbd>Control</kbd><kbd>Option</kbd><kbd>Space</kbd></p></div>
+      <div><span class="step-number">02</span><h2>Find</h2><p>Search files. Pin favorites.</p></div>
+      <div><span class="step-number">03</span><h2>Insert</h2><p>Press Return. Keep writing.</p></div>
+    </section>
+    <section class="detail-section" id="setup" aria-labelledby="setup-title">
+      <h2 id="setup-title">Set up Pathfinder.</h2>
+      <ol class="setup-list">
+        <li>Open the download and drag Pathfinder to Applications.</li>
+        <li>Launch Pathfinder. Choose Enable Insertion, turn on Pathfinder in the macOS permission pane, and return to the app. You can also use Copy without that permission.</li>
+        <li>Press Control–Option–Space. Change your shortcut anytime in Settings.</li>
+      </ol>
+    </section>
+    <section class="detail-section questions" id="questions" aria-labelledby="questions-title">
+      <h2 id="questions-title">A few good questions.</h2>
+      <div class="faq-list">
+        <details><summary>Is it really free?<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h14M10 3v14"/></svg></summary><p>Yes. Free to download and use, with no account, subscription, or paid tier.</p></details>
+        <details open><summary>Does it upload my files?<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h14M10 3v14"/></svg></summary><p>No. Pathfinder inserts a plain-text path. It does not attach the file or give an AI app access to it.</p></details>
+        <details><summary>What stays on my Mac?<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h14M10 3v14"/></svg></summary><p>Your pins, preferences, and usage history stay locally on your Mac. Pathfinder has no analytics or file uploads and does not store your chat text. You can turn off usage history or clear it in Settings.</p><p>Search uses Spotlight. Excluded or unindexed files may not appear; use the app’s file chooser to select them directly. <a href="privacy.html">Read the privacy details.</a></p></details>
+        <details><summary>Which Macs does it support?<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h14M10 3v14"/></svg></summary><p>This download is for Apple silicon Macs running macOS 14 or later. Intel Macs are not supported by this build. Version 0.1.0 is an early release, signed with Developer ID and notarized by Apple.</p><p>Path insertion has been tested with ChatGPT and Claude. Other text fields may behave differently; Copy is always available. A fresh installation on another Mac remains to be tested.</p></details>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer wrap"><div><a href="./" class="footer-brand">Pathfinder</a><span>Made by Mark Weisberg</span></div><nav aria-label="Footer"><a href="https://github.com/mweisberg21/pathfinder/releases/tag/v0.1.0">Release notes</a><a href="https://github.com/mweisberg21/pathfinder/issues">Report an issue</a><a href="privacy.html">Privacy</a></nav></footer>
+</body>
+</html>
